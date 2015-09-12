@@ -15,7 +15,7 @@ struct DailyWeather {
     let humidity: Int?
     let precipChance: Int?
     let summary: String?
-    let icon: UIImage? = UIImage(named: "default.png")
+    var icon: UIImage? = UIImage(named: "default.png")
     var largeIcon: UIImage? = UIImage(named: "default_large.png")
     var sunriseTime: String?
     var sunsetTime: String?
@@ -24,6 +24,7 @@ struct DailyWeather {
     
     init(dailyWeatherDict: [String: AnyObject]) {
         maxTemperature = dailyWeatherDict["temperatureMax"] as? Int
+        minTemperature = dailyWeatherDict["temperatureMin"] as? Int
         if let humidityFloat = dailyWeatherDict["humidity"] as? Double {
             humidity = Int(humidityFloat * 100)
         } else {

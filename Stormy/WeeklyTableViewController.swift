@@ -63,7 +63,7 @@ class WeeklyTableViewController: UITableViewController {
             if let indexPath = tableView.indexPathForSelectedRow() {
                 let dailyWeather = weeklyWeather[indexPath.row]
                 
-                (segue.destinationViewController as ViewController).dailyWeather = dailyWeather
+                (segue.destinationViewController as! ViewController).dailyWeather = dailyWeather
             }
         }
     }
@@ -86,7 +86,7 @@ class WeeklyTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("WeatherCell") as DailyWeatherTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("WeatherCell") as! DailyWeatherTableViewCell
         let dailyWeather = weeklyWeather[indexPath.row]
         if let maxTemp = dailyWeather.maxTemperature {
             cell.temperatureLabel?.text = "\(maxTemp)º"
@@ -142,7 +142,7 @@ class WeeklyTableViewController: UITableViewController {
                         
                         if let highTemp = self.weeklyWeather.first?.maxTemperature {
                             if let lowTemp = self.weeklyWeather.first?.minTemperature {
-                                self.currentTemperatureLabel?.text = "↑\(highTemp)º↓\(lowTemp)"
+                                self.currentTemperatureRangeLabel?.text = "↑\(highTemp)º↓\(lowTemp)"
                             }
                         }
                         
