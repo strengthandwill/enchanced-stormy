@@ -105,8 +105,8 @@ class WeeklyTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         view.tintColor = UIColor(red: 170/255.0, green: 131/255.0, blue: 224/255.0, alpha: 1.0)
         if let header = view as? UITableViewHeaderFooterView {
-            header.textLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 14.0)
-            header.textLabel.textColor = UIColor.whiteColor()
+            header.textLabel!.font = UIFont(name: "HelveticaNeue-Thin", size: 14.0)
+            header.textLabel!.textColor = UIColor.whiteColor()
         }
     }
     
