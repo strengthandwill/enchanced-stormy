@@ -30,7 +30,7 @@ class BackgroundView: UIView {
         CGContextDrawLinearGradient(context, purpleGradient,
             CGPointMake(160, 0),
             CGPointMake(160, 568),
-            UInt32(kCGGradientDrawsBeforeStartLocation) | UInt32(kCGGradientDrawsAfterEndLocation))
+            [.DrawsBeforeStartLocation, .DrawsAfterEndLocation])
         CGContextRestoreGState(context)
     }
 }

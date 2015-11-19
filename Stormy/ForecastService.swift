@@ -26,7 +26,7 @@ struct ForecastService {
                     completion(forecast)
             }
         } else {
-            println("Could no construct a valid URL")
+            print("Could no construct a valid URL")
         }
     }
 }

@@ -39,7 +39,7 @@ class WeeklyTableViewController: UITableViewController {
         
         // Change the font and size of nav bar text
         if let navBarFont = UIFont(name: "HelveticaNeue-Thin", size: 20.0) {
-            let navBarAttributesDictionary: [NSObject: AnyObject]? = [
+            let navBarAttributesDictionary: [String: AnyObject]? = [
                 NSForegroundColorAttributeName: UIColor.whiteColor(),
                 NSFontAttributeName: navBarFont
             ]
@@ -60,7 +60,7 @@ class WeeklyTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDaily" {
-            if let indexPath = tableView.indexPathForSelectedRow() {
+            if let indexPath = tableView.indexPathForSelectedRow {
                 let dailyWeather = weeklyWeather[indexPath.row]
                 
                 (segue.destinationViewController as! ViewController).dailyWeather = dailyWeather
@@ -112,7 +112,7 @@ class WeeklyTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
         let highlightColor = UIColor(red: 165/255.0, green: 142/255.0, blue: 203/255.0, alpha: 1.0)
-        var cell = tableView.cellForRowAtIndexPath(indexPath)
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell?.contentView.backgroundColor = highlightColor
         let highlightView = UIView()
         highlightView.backgroundColor = highlightColor
