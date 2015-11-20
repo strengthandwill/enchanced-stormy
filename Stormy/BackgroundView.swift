@@ -15,8 +15,8 @@ class BackgroundView: UIView {
         // Background View
         
         //// Color Declarations
-        let lightPurple: UIColor = UIColor(red: 0.377, green: 0.075, blue: 0.778, alpha: 1.000)
-        let darkPurple: UIColor = UIColor(red: 0.060, green: 0.036, blue: 0.202, alpha: 1.000)
+        let lightPurple: UIColor = UIColor(red:0, green:0.58, blue:1, alpha:1)
+        let darkPurple: UIColor = UIColor(red:0.51, green:0.81, blue:0.93, alpha:1)
         
         let context = UIGraphicsGetCurrentContext()
         

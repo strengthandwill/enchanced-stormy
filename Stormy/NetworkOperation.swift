@@ -37,8 +37,7 @@ class NetworkOperation {
                 }
             } else {
                 print("Error: Not a valid HTTP response")
-            }
-            
+            }            
         }
         dataTask.resume()
     }
