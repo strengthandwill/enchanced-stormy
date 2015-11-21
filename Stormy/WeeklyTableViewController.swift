@@ -16,31 +16,15 @@ class WeeklyTableViewController: UITableViewController {
     @IBOutlet weak var currentPrecipitationLabel: UILabel?
     @IBOutlet weak var currentTemperatureRangeLabel: UILabel?
     
+    let forecastAPIKey = "770b057c323d603d9c8a15beeeea7f06"
     let locationService = LocationService()
     var weeklyWeather: [DailyWeather] = []
-    var coordinate: CLLocationCoordinate2D?
-    
-    private let forecastAPIKey = "770b057c323d603d9c8a15beeeea7f06"
+    var coordinate: CLLocationCoordinate2D?        
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
-        locationService.findLocation() {
-            (coordinate, placemark) -> Void in
-            var location: String?
-            if  let locality = placemark.locality,
-                let administrativeArea = placemark.administrativeArea {
-                self.coordinate = coordinate
-                location = "\(locality) ,\(administrativeArea)"
-                self.retreiveWeatherForecast()
-            } else {
-                self.coordinate = CLLocationCoordinate2D(latitude: 1.3, longitude: 103.8)
-                location = "Singapore, SG"
-            }
-            if  let currentLocalityLabel = self.currentLocalityLabel {
-                currentLocalityLabel.text = location
-            }
-        }
+        reloadLocation()
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,9 +54,30 @@ class WeeklyTableViewController: UITableViewController {
         refreshControl?.tintColor = UIColor.whiteColor()
     }
     
+    func reloadLocation() {
+        locationService.findLocation() {
+            (coordinate, placemark) -> Void in
+            var location: String?
+            if  let locality = placemark.locality,
+                let administrativeArea = placemark.administrativeArea {
+                    self.coordinate = coordinate
+                    location = "\(locality) ,\(administrativeArea)"
+                    self.retreiveWeatherForecast()
+            } else {
+                self.coordinate = CLLocationCoordinate2D(latitude: 1.3, longitude: 103.8)
+                location = "Singapore, SG"
+            }
+            if  let currentLocalityLabel = self.currentLocalityLabel {
+                currentLocalityLabel.text = location
+            }
+        }
+    }
+    
     @IBAction func refreshWeather() {
-        retreiveWeatherForecast()
-        refreshControl?.endRefreshing()
+        if let refreshControl = refreshControl {
+            reloadLocation()
+            refreshControl.endRefreshing()
+        }
     }
     
     // MARK: - Navigation    
@@ -124,15 +129,6 @@ class WeeklyTableViewController: UITableViewController {
             header.textLabel!.font = UIFont(name: "HelveticaNeue-Thin", size: 14.0)
             header.textLabel!.textColor = UIColor.blackColor()
         }
-    }
-    
-    override func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
-        let highlightColor = UIColor(red: 165/255.0, green: 142/255.0, blue: 203/255.0, alpha: 1.0)
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        cell?.contentView.backgroundColor = highlightColor
-        let highlightView = UIView()
-        highlightView.backgroundColor = highlightColor
-        cell?.selectedBackgroundView = highlightView
     }
     
     // MARK: - Weather Fetching

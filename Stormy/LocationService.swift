@@ -34,6 +34,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             }
             if  let completionHandler = self.completionHandler,
                 let placemarks = placemarks where placemarks.count > 0 {
+                self.locationManager.stopUpdatingLocation()
                 completionHandler(locations[0].coordinate, placemarks[0])
             } else {
                 print("Problem with the data received from geocoder")
