@@ -18,7 +18,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var precipitationLabel: UILabel?
     @IBOutlet weak var humidityLabel: UILabel?
     
-    
     var dailyWeather: DailyWeather? {
         didSet {
             configureView()

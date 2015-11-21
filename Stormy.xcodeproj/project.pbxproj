@@ -26,6 +26,7 @@
 		6871B0F61BA2B6BD00F10444 /* screenshot1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6871B0F51BA2B6BD00F10444 /* screenshot1.png */; };
 		6871B12E1BA312BE00F10444 /* WeeklyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6871B12D1BA312BE00F10444 /* WeeklyTableViewController.swift */; };
 		6871B1301BA313B600F10444 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6871B12F1BA313B600F10444 /* BackgroundView.swift */; };
+		688467FA1C009C8B001291A0 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688467F91C009C8B001291A0 /* LocationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		6871B0F51BA2B6BD00F10444 /* screenshot1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot1.png; sourceTree = "<group>"; };
 		6871B12D1BA312BE00F10444 /* WeeklyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyTableViewController.swift; sourceTree = "<group>"; };
 		6871B12F1BA313B600F10444 /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		688467F91C009C8B001291A0 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 				683AFA041BA32C380095D434 /* Weather */,
 				6871B0F01BA1D6B500F10444 /* NetworkOperation.swift */,
 				6871B0F21BA2665000F10444 /* ForecastService.swift */,
+				688467F91C009C8B001291A0 /* LocationService.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				683AFA0B1BA3384C0095D434 /* Forecast.swift in Sources */,
 				6871B12E1BA312BE00F10444 /* WeeklyTableViewController.swift in Sources */,
 				6871B1301BA313B600F10444 /* BackgroundView.swift in Sources */,
+				688467FA1C009C8B001291A0 /* LocationService.swift in Sources */,
 				6869A95B1BA07DF700F86B7A /* CurrentWeather.swift in Sources */,
 				6871B0F31BA2665000F10444 /* ForecastService.swift in Sources */,
 				6869A9371BA0777600F86B7A /* AppDelegate.swift in Sources */,

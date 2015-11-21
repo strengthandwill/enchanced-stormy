@@ -7,22 +7,40 @@
 //
 
 import UIKit
+import CoreLocation
 
 class WeeklyTableViewController: UITableViewController {
+    @IBOutlet weak var currentLocalityLabel: UILabel?
     @IBOutlet weak var currentTemperatureLabel: UILabel?
     @IBOutlet weak var currentWeatherIcon: UIImageView?
     @IBOutlet weak var currentPrecipitationLabel: UILabel?
     @IBOutlet weak var currentTemperatureRangeLabel: UILabel?
     
+    let locationService = LocationService()
     var weeklyWeather: [DailyWeather] = []
+    var coordinate: CLLocationCoordinate2D?
     
     private let forecastAPIKey = "770b057c323d603d9c8a15beeeea7f06"
-    let coordinate: (lat: Double, long: Double) = (1.3,103.8)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
-        retreiveWeatherForecast()
+        locationService.findLocation() {
+            (coordinate, placemark) -> Void in
+            var location: String?
+            if  let locality = placemark.locality,
+                let administrativeArea = placemark.administrativeArea {
+                self.coordinate = coordinate
+                location = "\(locality) ,\(administrativeArea)"
+                self.retreiveWeatherForecast()
+            } else {
+                self.coordinate = CLLocationCoordinate2D(latitude: 1.3, longitude: 103.8)
+                location = "Singapore, SG"
+            }
+            if  let currentLocalityLabel = self.currentLocalityLabel {
+                currentLocalityLabel.text = location
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,8 +75,7 @@ class WeeklyTableViewController: UITableViewController {
         refreshControl?.endRefreshing()
     }
     
-    // MARK: - Navigation
-    
+    // MARK: - Navigation    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDaily" {
             if let indexPath = tableView.indexPathForSelectedRow {
@@ -70,7 +87,6 @@ class WeeklyTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // Return the number of sections.
         return 1
@@ -102,7 +118,6 @@ class WeeklyTableViewController: UITableViewController {
     }
     
     // MARKL - Delegate Methods
-    
     override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         view.tintColor = UIColor.whiteColor()
         if let header = view as? UITableViewHeaderFooterView {
@@ -121,33 +136,34 @@ class WeeklyTableViewController: UITableViewController {
     }
     
     // MARK: - Weather Fetching
-    
     func retreiveWeatherForecast() {
         let forecastService = ForecastService(APIKey: forecastAPIKey)
-        forecastService.getForecast(coordinate.lat, long: coordinate.long) {
-            (let forecast) in
-            if let weatherForecast = forecast {
-                if let currentWeather = weatherForecast.currentWeather {
-                    dispatch_async(dispatch_get_main_queue()) {
-                        if let temperature = currentWeather.temperature {
-                            self.currentTemperatureLabel?.text = "\(temperature)º"
-                        }
-                        if let precipitation = currentWeather.precipProbability {
-                            self.currentPrecipitationLabel?.text = "Rain: \(precipitation)%"
-                        }
-                        if let icon = currentWeather.icon {
-                            self.currentWeatherIcon?.image = icon
-                        }
-                    
-                        self.weeklyWeather = weatherForecast.weekly
-                        
-                        if let highTemp = self.weeklyWeather.first?.maxTemperature {
-                            if let lowTemp = self.weeklyWeather.first?.minTemperature {
-                                self.currentTemperatureRangeLabel?.text = "↑\(highTemp)º↓\(lowTemp)"
+        if  let latitude = coordinate?.latitude,
+            let longitude = coordinate?.longitude {
+            forecastService.getForecast(latitude, long: longitude) {
+                (let forecast) in
+                if let weatherForecast = forecast {
+                    if let currentWeather = weatherForecast.currentWeather {
+                        dispatch_async(dispatch_get_main_queue()) {
+                            if let temperature = currentWeather.temperature {
+                                self.currentTemperatureLabel?.text = "\(temperature)º"
                             }
-                        }
+                            if let precipitation = currentWeather.precipProbability {
+                                self.currentPrecipitationLabel?.text = "Rain: \(precipitation)%"
+                            }
+                            if let icon = currentWeather.icon {
+                                self.currentWeatherIcon?.image = icon
+                            }
                         
-                        self.tableView.reloadData()
+                            self.weeklyWeather = weatherForecast.weekly
+                            
+                            if let highTemp = self.weeklyWeather.first?.maxTemperature {
+                                if let lowTemp = self.weeklyWeather.first?.minTemperature {
+                                    self.currentTemperatureRangeLabel?.text = "↑\(highTemp)º↓\(lowTemp)"
+                                }
+                            }
+                            self.tableView.reloadData()
+                        }
                     }
                 }
             }

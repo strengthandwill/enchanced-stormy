@@ -323,6 +323,7 @@
                         </connections>
                     </refreshControl>
                     <connections>
+                        <outlet property="currentLocalityLabel" destination="gpu-Fi-wOh" id="5gg-Bs-rD9"/>
                         <outlet property="currentPrecipitationLabel" destination="NyB-Ll-5oG" id="qTb-Fi-pdC"/>
                         <outlet property="currentTemperatureLabel" destination="3Ae-dL-H3b" id="EyH-bB-86B"/>
                         <outlet property="currentTemperatureRangeLabel" destination="gFo-6z-IH9" id="fRH-Xr-fgZ"/>
