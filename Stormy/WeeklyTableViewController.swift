@@ -18,8 +18,9 @@ class WeeklyTableViewController: UITableViewController {
     
     let forecastAPIKey = "770b057c323d603d9c8a15beeeea7f06"
     let locationService = LocationService()
+    var locality: String?    
     var weeklyWeather: [DailyWeather] = []
-    var coordinate: CLLocationCoordinate2D?        
+    var coordinate: CLLocationCoordinate2D?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,18 +58,11 @@ class WeeklyTableViewController: UITableViewController {
     func reloadLocation() {
         locationService.findLocation() {
             (coordinate, placemark) -> Void in
-            var location: String?
-            if  let locality = placemark.locality,
-                let administrativeArea = placemark.administrativeArea {
-                    self.coordinate = coordinate
-                    location = "\(locality) ,\(administrativeArea)"
-                    self.retreiveWeatherForecast()
-            } else {
-                self.coordinate = CLLocationCoordinate2D(latitude: 1.3, longitude: 103.8)
-                location = "Singapore, SG"
-            }
-            if  let currentLocalityLabel = self.currentLocalityLabel {
-                currentLocalityLabel.text = location
+            if  let placemarkLocality = placemark.locality,
+                let placemarkCountry = placemark.country {
+                self.coordinate = coordinate
+                self.locality = "\(placemarkLocality) ,\(placemarkCountry)"
+                self.retreiveWeatherForecast()
             }
         }
     }
@@ -85,8 +79,9 @@ class WeeklyTableViewController: UITableViewController {
         if segue.identifier == "showDaily" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let dailyWeather = weeklyWeather[indexPath.row]
-                
-                (segue.destinationViewController as! ViewController).dailyWeather = dailyWeather
+                let viewController = segue.destinationViewController as! ViewController
+                viewController.locality = locality
+                viewController.dailyWeather = dailyWeather
             }
         }
     }
@@ -141,6 +136,10 @@ class WeeklyTableViewController: UITableViewController {
                 if let weatherForecast = forecast {
                     if let currentWeather = weatherForecast.currentWeather {
                         dispatch_async(dispatch_get_main_queue()) {
+                            if  let currentLocalityLabel = self.currentLocalityLabel,
+                                let locality = self.locality {
+                                currentLocalityLabel.text = locality
+                            }
                             if let temperature = currentWeather.temperature {
                                 self.currentTemperatureLabel?.text = "\(temperature)º"
                             }

@@ -134,6 +134,12 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Singapore" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qxa-3z-VWs">
+                                <rect key="frame" x="257.5" y="57" width="85" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.29019607843137252" green="0.56470588235294117" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -144,8 +150,10 @@
                             <constraint firstItem="Qau-z9-nYf" firstAttribute="centerX" secondItem="KIk-hq-8Vl" secondAttribute="centerX" id="58o-Gr-kFD"/>
                             <constraint firstAttribute="centerX" secondItem="2GQ-iO-Z6e" secondAttribute="centerX" constant="-37.5" id="5vW-7v-y2E"/>
                             <constraint firstItem="KT5-6t-tHu" firstAttribute="top" secondItem="sc6-tn-r2n" secondAttribute="top" constant="-8" id="BQR-bU-JPw"/>
+                            <constraint firstItem="Gur-Da-WQs" firstAttribute="top" secondItem="Qxa-3z-VWs" secondAttribute="bottom" constant="50" id="GX3-hN-Jbr"/>
                             <constraint firstItem="KT5-6t-tHu" firstAttribute="top" secondItem="sc6-tn-r2n" secondAttribute="top" constant="-8" id="MDq-hZ-qfK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gkz-ud-poh" secondAttribute="trailing" constant="26" id="NTF-C8-I6h"/>
+                            <constraint firstItem="Qxa-3z-VWs" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="PO5-Z3-edQ"/>
                             <constraint firstItem="EKw-V5-9tr" firstAttribute="centerX" secondItem="2GQ-iO-Z6e" secondAttribute="centerX" id="Pxa-zd-xL9"/>
                             <constraint firstAttribute="centerX" secondItem="30p-LK-qF8" secondAttribute="centerX" constant="37.5" id="QNH-bK-COH"/>
                             <constraint firstItem="Qau-z9-nYf" firstAttribute="centerX" secondItem="Zow-0d-mBm" secondAttribute="centerX" id="QPB-Rx-m9f"/>
@@ -184,6 +192,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="currentLocalityLabel" destination="Qxa-3z-VWs" id="UTa-db-L3L"/>
                         <outlet property="highTemperatureLabel" destination="Lqv-7h-nb3" id="kJy-1a-p8I"/>
                         <outlet property="humidityLabel" destination="Zow-0d-mBm" id="9zH-gD-KDD"/>
                         <outlet property="lowTemperatureLabel" destination="zn8-EI-dxL" id="0f4-fm-kKk"/>

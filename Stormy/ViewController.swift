@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var currentLocalityLabel: UILabel?
     @IBOutlet weak var weatherIcon: UIImageView?
     @IBOutlet weak var summaryLabel: UILabel?
     @IBOutlet weak var sunriseTimeLabel: UILabel?
@@ -18,6 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var precipitationLabel: UILabel?
     @IBOutlet weak var humidityLabel: UILabel?
     
+    var locality: String?
     var dailyWeather: DailyWeather? {
         didSet {
             configureView()
@@ -31,6 +33,11 @@ class ViewController: UIViewController {
     }
     
     func configureView() {
+        if  let currentLocalityLabel = self.currentLocalityLabel,
+            let locality = self.locality {
+            currentLocalityLabel.text = locality
+        }
+        
         if let weather = dailyWeather {
             // Update UI with informaton from the data model
             weatherIcon?.image = weather.largeIcon
