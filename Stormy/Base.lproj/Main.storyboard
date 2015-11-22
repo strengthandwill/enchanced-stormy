@@ -337,6 +337,7 @@
                         <outlet property="currentTemperatureLabel" destination="3Ae-dL-H3b" id="EyH-bB-86B"/>
                         <outlet property="currentTemperatureRangeLabel" destination="gFo-6z-IH9" id="fRH-Xr-fgZ"/>
                         <outlet property="currentWeatherIcon" destination="fWu-ZO-gY8" id="Ibk-GG-AVK"/>
+                        <outlet property="currentWeatherView" destination="9gd-cN-NtA" id="Edf-O0-zBl"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ci-Wn-RFj" userLabel="First Responder" sceneMemberID="firstResponder"/>

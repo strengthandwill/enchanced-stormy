@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 
 class WeeklyTableViewController: UITableViewController {
+    @IBOutlet weak var currentWeatherView: UIView?
     @IBOutlet weak var currentLocalityLabel: UILabel?
     @IBOutlet weak var currentTemperatureLabel: UILabel?
     @IBOutlet weak var currentWeatherIcon: UIImageView?
@@ -53,6 +54,10 @@ class WeeklyTableViewController: UITableViewController {
         // Position refresh control above background view
         refreshControl?.layer.zPosition = tableView.backgroundView!.layer.zPosition + 1
         refreshControl?.tintColor = UIColor.whiteColor()
+        
+        if let currentWeatherView = self.currentWeatherView {
+            currentWeatherView.hidden = true
+        }        
     }
     
     func reloadLocation() {
@@ -156,6 +161,9 @@ class WeeklyTableViewController: UITableViewController {
                                 if let lowTemp = self.weeklyWeather.first?.minTemperature {
                                     self.currentTemperatureRangeLabel?.text = "↑\(highTemp)º↓\(lowTemp)"
                                 }
+                            }
+                            if let currentWeatherView = self.currentWeatherView {
+                                currentWeatherView.hidden = false
                             }
                             self.tableView.reloadData()
                         }
