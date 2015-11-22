@@ -66,7 +66,7 @@ class WeeklyTableViewController: UITableViewController {
             if  let placemarkLocality = placemark.locality,
                 let placemarkCountry = placemark.country {
                 self.coordinate = coordinate
-                self.locality = "\(placemarkLocality) ,\(placemarkCountry)"
+                self.locality = "\(placemarkLocality), \(placemarkCountry)"
                 self.retreiveWeatherForecast()
             }
         }
