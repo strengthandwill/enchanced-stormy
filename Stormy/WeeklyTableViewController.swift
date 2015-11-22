@@ -57,7 +57,7 @@ class WeeklyTableViewController: UITableViewController {
         
         if let currentWeatherView = self.currentWeatherView {
             currentWeatherView.hidden = true
-        }        
+        }
     }
     
     func reloadLocation() {
