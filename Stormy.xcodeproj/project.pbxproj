@@ -47,7 +47,7 @@
 		683AFA0C1BA3D4920095D434 /* DailyWeatherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyWeatherTableViewCell.swift; sourceTree = "<group>"; };
 		683AFA0E1BA3E9E90095D434 /* DetailBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailBackgroundView.swift; sourceTree = "<group>"; };
 		683AFA101BA412880095D434 /* screenshot2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot2.png; sourceTree = "<group>"; };
-		6869A9311BA0777600F86B7A /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6869A9311BA0777600F86B7A /* Weathery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weathery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6869A9351BA0777600F86B7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6869A9361BA0777600F86B7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6869A9381BA0777600F86B7A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 		6869A9321BA0777600F86B7A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6869A9311BA0777600F86B7A /* Weather.app */,
+				6869A9311BA0777600F86B7A /* Weathery.app */,
 				6869A9461BA0777600F86B7A /* StormyTests.xctest */,
 			);
 			name = Products;
@@ -224,7 +224,7 @@
 			);
 			name = Stormy;
 			productName = Stormy;
-			productReference = 6869A9311BA0777600F86B7A /* Weather.app */;
+			productReference = 6869A9311BA0777600F86B7A /* Weathery.app */;
 			productType = "com.apple.product-type.application";
 		};
 		6869A9451BA0777600F86B7A /* StormyTests */ = {
@@ -403,7 +403,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = Weather;
+				PRODUCT_NAME = Weathery;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -439,7 +439,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = Weather;
+				PRODUCT_NAME = Weathery;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -451,7 +451,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Stormy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = Weather;
+				PRODUCT_BUNDLE_IDENTIFIER = com.algomized.weeklyweather;
+				PRODUCT_NAME = Weathery;
 			};
 			name = Debug;
 		};
@@ -461,7 +462,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Stormy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = Weather;
+				PRODUCT_BUNDLE_IDENTIFIER = com.algomized.weeklyweather;
+				PRODUCT_NAME = Weathery;
 			};
 			name = Release;
 		};
@@ -480,7 +482,7 @@
 				INFOPLIST_FILE = StormyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stormy.app/Stormy";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Weather.app/Weather";
 			};
 			name = Debug;
 		};
@@ -495,7 +497,7 @@
 				INFOPLIST_FILE = StormyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stormy.app/Stormy";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Weather.app/Weather";
 			};
 			name = Release;
 		};

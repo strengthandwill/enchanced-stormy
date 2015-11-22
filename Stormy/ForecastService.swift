@@ -18,7 +18,7 @@ struct ForecastService {
     }
     
     func getForecast(lat: Double, long: Double, completion: (Forecast? -> Void)) {
-        if let forecastURL = NSURL(string: "\(lat),\(long)", relativeToURL: forecastBaseURL) {
+        if let forecastURL = NSURL(string: "\(lat),\(long)?units=si", relativeToURL: forecastBaseURL) {
             let networkOperation = NetworkOperation(url: forecastURL)
             networkOperation.downloadJSONFromURL {
                 (let JSONDictionary) in
