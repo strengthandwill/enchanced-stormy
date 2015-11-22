@@ -1,4 +1,4 @@
-# Enchanced Stormy
+# Weekly Weather
 IOS Weather App Demo calling Forecast API with Table Views
 
 <img src="https://github.com/strengthandwill/enchanced-stormy/blob/master/Stormy/Images.xcassets/screenshot1.imageset/screenshot1.png" height="480" />
